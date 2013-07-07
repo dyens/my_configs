@@ -1,0 +1,5 @@
+1 - 1920x1080
+2 - 1360x768
+montage 1.jpg -geometry +0+0 -tile x1 -resize 1813x  4.jpg
+montage 4.jpg 1.jpg -geometry +0+0 -tile x1  3.jpg
+feh  --bg-scale 3.jpg

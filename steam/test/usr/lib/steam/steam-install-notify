@@ -1,0 +1,9 @@
+Name: Steam Beta Installer
+Priority: Medium
+Command: /usr/bin/steam
+DontShowAfterReboot: False
+ButtonText: Start Steam Beta
+DisplayIf: test ! -x ~/Steam/ubuntu12_32/steam
+OnlyAdminUsers: False
+Description: 
+ Start Steam to complete installation of the Steam Beta for the current user.
