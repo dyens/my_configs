@@ -1,0 +1,5 @@
+emerge --sync
+emerge -avquDN world
+emerge -avquDN world --resume
+revdep-rebuild
+dispatch-conf
