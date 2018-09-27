@@ -28,34 +28,44 @@ values."
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
-   ;; List of configuration layers to load. If it is the symbol `all' instead
-   ;; of a list then all discovered layers will be installed.
+   ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     helm
+     python
+;;     (colors :variables colors-colorize-identifiers 'all)
+       (python :variables python-test-runner 'pytest)
+     (colors :variables colors-enable-nyan-cat-progress-bar t)
+     nginx
+     yaml
+     markdown
+     syntax-checking
+     csv
      javascript
      rust
      lua
      sql
      html
      ;; ----------------------------------------------------------------
-     ;; Example of useful layers you may want to use right away.
+     ;; Example of useful layewarnings expandrs you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
      emacs-lisp
-     python
-;;     avy
-     ipython-notebook
-;;     org
-     (c-c++ :variables c-c++-enable-clang-support t)
-     ;; git
+     git
      ;; markdown
-     ;; org
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
+
+     (shell :variables
+            shell-default-shell 'multi-term
+            shell-default-height 30
+            shell-default-position 'bottom)
+
      spell-checking
      ;; version-control
      )
@@ -67,6 +77,7 @@ values."
    '(
      ob-ipython
      htmlize
+     vue-mode
     )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -88,6 +99,9 @@ values."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
+
+   dotspacemacs-configuration-layers 
+   '((syntax-checking :variables syntax-checking-use-original-bitmaps t))
    ;; If non nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
    ;; environment, otherwise it is strongly recommended to let it set to t.
@@ -138,16 +152,16 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         monokai
+                         spacemacs-dark
                          leuven
+                         spacemacs-light
+                         monokai
                          darkokai
                          gruvbox
                          doom-molokai
                          doom-one
                          gotham
                          dracula
-                         spacemacs-dark
-                         spacemacs-light
                          solarized-light
                          solarized-dark
                          zenburn
@@ -156,9 +170,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("SourceCodePro "
-                               ;;"DejaVu Sans Mono"
-                               :size 13
+   dotspacemacs-default-font '(
+                               ;;"FiraCode "
+                               ;;"SourceCodePro "
+                               "DejaVu Sans Mono"
+                               :size 15
                                :weight medium
                                :width normal
                                :powerline-scale 1.1)
@@ -215,10 +231,6 @@ values."
    dotspacemacs-auto-save-file-location 'cache
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
-   ;; If non nil then `ido' replaces `helm' for some commands. For now only
-   ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
-   ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido nil
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
@@ -291,7 +303,7 @@ values."
    dotspacemacs-line-numbers '(:prog-mode t)
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
-   dotspacemacs-folding-method 'evil
+   dotspacemacs-folding-method 'origami
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -305,7 +317,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -352,7 +364,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
     (setq css-indent-offset n) ; css-mode
     )
-  (my-setup-indent 4)
+  (my-setup-indent 2)
 
 
   )
@@ -383,6 +395,25 @@ you should place your code here."
 ;;      (with-current-buffer buff
 ;;        (compilation-mode))))
 
+  ;; Shell config
+  (setq multi-term-program "/usr/bin/zsh")
+
+  ;; Rust config
+  (setq-default rust-enable-racer t)
+  (setq racer-cmd "~/.cargo/bin/racer")
+  (setq racer-rust-src-path "/home/dyens/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+  (add-hook 'racer-mode-hook #'eldoc-mode)
+  (add-hook 'rust-mode-hook
+            (lambda ()
+              (message "running rust mode hook")
+              (setq-default evil-shift-width 4)
+              (setq tab-width 4)
+              (company-mode)
+              (racer-mode)
+              (flycheck-mode)
+              ))
+
+
 
   )
 
@@ -393,11 +424,12 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(paradox-github-token t))
+ '(package-selected-packages
+   (quote
+    (origami request-deferred websocket deferred helm-gitignore magit magit-popup git-commit ghub treepy graphql with-editor helm-pydoc anaconda-mode pythonic helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag flyspell-correct-helm ace-jump-helm-line yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toml-mode toc-org tagedit sql-indent spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-mode rainbow-identifiers rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort pug-mode popwin pony-mode pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file ob-ipython nginx-mode neotree mwim multi-term move-text markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-ivy flycheck-rust flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav ein dumb-jump disaster diminish define-word cython-mode csv-mode counsel-projectile company-web company-tern company-statistics company-c-headers company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmake-mode clean-aindent-mode clang-format cargo auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ )
