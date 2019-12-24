@@ -25,7 +25,9 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -i -l 20 
+# mouse click
+bindsym $mod+z exec xdotool click 2 
 
 # change focus
 bindsym $mod+h focus left
@@ -138,8 +140,39 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        workspace_buttons yes
+        font pango:Dejavu Sans Mono 10
+        colors {
+            statusline #999999
+            background #252525
+
+    # class border backgrd text
+            focused_workspace #292929 #00AFDA #484848
+            active_workspace #252525 #252525 #696f89
+            inactive_workspace #252525 #252525 #00AFDA
+            urgent_workspace #252525 #252525 #c7a551
+   }
 }
 
+
+#exec --no-startup-id feh --randomize --bg-scale ~/walls
+#exec --no-startup-id xrdb -merge ~/.Xdefaults
+##exec --no-startup-id conky
+#exec --no-startup-id i3-msg 'workspace 10; exec skype; exec psi; exec thunderbird'
+#exec --no-startup-id i3-msg 'workspace 10; exec skype; exec thunderbird'
+#exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+
+#The key shortcuts are likely called XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute. Since only the mute is broken concentrate
+#your efforts on changing that out first.
+
+#toggle master mute of the pulsaudio master: amixer set Master toggle
+bindsym XF86AudioMute exec "amixer set Master toggle"
+
+#rise master volume of pulseaudio master
+bindsym XF86AudioRaiseVolume exec "amixer set Master unmute; amixer -c 0 set Master 1dB+"
+
+#lower master volume of pulseaudio master
+bindsym XF86AudioLowerVolume exec "amixer set Master unmute; amixer -c 0 set Master 1dB-"
 
 new_window pixel 0
 bindsym $mod+p exec i3lock -c 000000
