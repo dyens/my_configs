@@ -1,20 +1,21 @@
-# /etc/skel/.bashrc
-#
-# This file is sourced by all *interactive* bash shells on startup,
-# including some apparently interactive shells such as scp and rcp
-# that can't tolerate any output.  So make sure this doesn't display
-# anything or bad things will happen !
+# .bashrc
 
-
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
-if [[ $- != *i* ]] ; then
-	# Shell is non-interactive.  Be done now!
-	return
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
 fi
 
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
 
-# Put your fun stuff here.
-#test
-#test2
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+
+alias em="emacsclient -c -a emacs"
