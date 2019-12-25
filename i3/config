@@ -26,6 +26,10 @@ bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run -i -l 20 
+
+# start password pickerl
+bindsym $mod+p exec python /home/dyens/my_configs/scripts/passmenu.py
+
 # mouse click
 bindsym $mod+z exec xdotool click 2 
 
@@ -175,4 +179,4 @@ bindsym XF86AudioRaiseVolume exec "amixer set Master unmute; amixer -c 0 set Mas
 bindsym XF86AudioLowerVolume exec "amixer set Master unmute; amixer -c 0 set Master 1dB-"
 
 new_window pixel 0
-bindsym $mod+p exec i3lock -c 000000
+bindsym $mod+o exec i3lock -c 000000
