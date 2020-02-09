@@ -9,6 +9,11 @@ fc-cache -rv
 
 * Alacritty
 #+BEGIN_SRC sh
+dnf copr enable pschyska/alacritty
+dnf install alacritty
+#+END_SRC
+
+#+BEGIN_SRC sh
 ln -s /home/dyens/my_configs/alacritty.yml /home/dyens/.config/alacritty/alacritty.yml
 #+END_SRC
 
