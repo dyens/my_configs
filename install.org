@@ -1,5 +1,4 @@
 * Font
-
 #+BEGIN_SRC sh
 ln -s /home/dyens/my_configs/NotoSansMono-Regular.ttf ~/.fonts/NotoSansMono-Regular.ttf
 #+END_SRC
@@ -7,3 +6,9 @@ ln -s /home/dyens/my_configs/NotoSansMono-Regular.ttf ~/.fonts/NotoSansMono-Regu
 #+BEGIN_SRC sh
 fc-cache -rv
 #+END_SRC
+
+* Alacritty
+#+BEGIN_SRC sh
+ln -s /home/dyens/my_configs/alacritty.yml /home/dyens/.config/alacritty/alacritty.yml
+#+END_SRC
+
