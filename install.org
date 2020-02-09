@@ -1,0 +1,9 @@
+* Font
+
+#+BEGIN_SRC sh
+ln -s /home/dyens/my_configs/NotoSansMono-Regular.ttf ~/.fonts/NotoSansMono-Regular.ttf
+#+END_SRC
+
+#+BEGIN_SRC sh
+fc-cache -rv
+#+END_SRC
