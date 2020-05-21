@@ -89,5 +89,5 @@ source $HOME/.profile
 
 alias -g A="|ccze -A"
 
-alias tmux="TERM=screen-256color-bce tmux attach || TERM=screen-256color-bce tmux new"
+alias tmux="TERM=screen-256color tmux attach || TERM=screen-256color tmux new"
 alias em="emacsclient -c -a emacs"
