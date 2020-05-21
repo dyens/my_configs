@@ -147,8 +147,8 @@ bar {
         workspace_buttons yes
         font pango:Dejavu Sans Mono 10
         colors {
-            statusline #999999
-            background #252525
+            statusline #a8a8a8
+            background #000000
 
     # class border backgrd text
             focused_workspace #292929 #00AFDA #484848
