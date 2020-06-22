@@ -5,8 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="frisk"
-#ZSH_THEME="avy"
+#ZSH_THEME="frisk"
+ZSH_THEME="norm"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -91,3 +91,5 @@ alias -g A="|ccze -A"
 
 alias tmux="TERM=screen-256color tmux attach || TERM=screen-256color tmux new"
 alias em="emacsclient -c -a emacs"
+
+export PATH=/home/dyens/.local/bin:$PATH
