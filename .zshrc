@@ -91,3 +91,15 @@ alias -g A="|ccze -A"
 
 alias tmux="TERM=screen-256color tmux attach || TERM=screen-256color tmux new"
 alias em="emacsclient -c -a emacs"
+
+# kubectl autocomp
+source <(kubectl completion zsh)
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.poetry/bin:$PATH"
