@@ -7,6 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="gallois"
 #ZSH_THEME="avy"
+#ZSH_THEME="norm"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -92,6 +93,7 @@ alias -g A="|ccze -A"
 alias tmux="TERM=screen-256color tmux attach || TERM=screen-256color tmux new"
 alias em="emacsclient -c -a emacs"
 
+<<<<<<< HEAD
 # kubectl autocomp
 source <(kubectl completion zsh)
 
@@ -103,3 +105,6 @@ if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc' ]; then
 if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH="$HOME/.poetry/bin:$PATH"
+=======
+export PATH=/home/dyens/.local/bin:$PATH
+>>>>>>> df4ec501d6b83e1108aabf3d3da01b68aba3a0a5
