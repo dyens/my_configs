@@ -47,7 +47,7 @@ ZSH_THEME="gallois"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found svn vi-mode docker cargo dnf docker-compose)
+plugins=(git command-not-found svn vi-mode docker cargo dnf docker-compose autojump)
 
 # User configuration
 
@@ -105,3 +105,8 @@ if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc' ]
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=/home/dyens/.local/bin:$PATH
+
+
+optirun() {
+    __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia "$@"
+}

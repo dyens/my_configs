@@ -5,6 +5,3 @@ fi
 
 export GOOGLE_APPLICATION_CREDENTIALS="/home/dyens/Ambra AI-5756a39a92a9.json"
 export PATH=/home/dyens/.local/bin:$PATH
-
-
-
