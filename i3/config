@@ -30,8 +30,12 @@ bindsym $mod+d exec dmenu_run -i -l 20
 # start password pickerl
 bindsym $mod+p exec python /home/dyens/my_configs/scripts/passmenu.py
 
+
+# start password pickerl
+bindsym $mod+z exec maim -s /home/dyens/screnshot.png
+
 # mouse click
-bindsym $mod+z exec xdotool click 2 
+# bindsym $mod+z exec xdotool click 2 
 
 # change focus
 bindsym $mod+h focus left
@@ -165,6 +169,9 @@ bar {
 #exec --no-startup-id i3-msg 'workspace 10; exec skype; exec psi; exec thunderbird'
 #exec --no-startup-id i3-msg 'workspace 10; exec skype; exec thunderbird'
 #exec --no-startup-id i3-msg 'workspace 1; exec firefox'
+
+exec "setxkbmap -layout us,ru"
+exec "setxkbmap -option 'grp:caps_toggle,grp_led:scroll,compose:ralt'"
 
 #The key shortcuts are likely called XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute. Since only the mute is broken concentrate
 #your efforts on changing that out first.
