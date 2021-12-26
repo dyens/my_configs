@@ -18,3 +18,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=$PATH:/usr/local/cuda/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64
 
+
+
+export PATH=$PATH:/usr/local/go/go/bin

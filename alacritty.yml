@@ -433,5 +433,3 @@ live_config_reload: true
 
   # Record all characters and escape sequences as test data.
   #ref_test: false
-
-
