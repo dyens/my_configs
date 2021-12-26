@@ -47,7 +47,7 @@ ZSH_THEME="gallois"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found svn vi-mode docker cargo dnf docker-compose autojump)
+plugins=(git command-not-found svn vi-mode docker cargo dnf docker-compose autojump z)
 
 # User configuration
 
@@ -98,7 +98,7 @@ source <(kubectl completion zsh)
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc' ]; then . '/home/dyens/Загрузки/gcl/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc'; fi
