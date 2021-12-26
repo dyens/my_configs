@@ -105,3 +105,6 @@ if [ -f '/home/dyens/Загрузки/gcl/google-cloud-sdk/completion.zsh.inc' ]
 
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH=/home/dyens/.local/bin:$PATH
+export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
+
+eval "$(starship init zsh)"
