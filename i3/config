@@ -172,7 +172,7 @@ exec --no-startup-id feh --bg-scale ~/wall2.jpg
 #exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 
 exec --no-startup-id "setxkbmap -layout us,ru"
-exec --no-startup-id "setxkbmap -option 'grp:caps_toggle,grp_led:scroll,compose:ralt'"
+exec --no-startup-id "setxkbmap -option grp:caps_toggle,grp_led:scroll,compose:ralt"
 
 #The key shortcuts are likely called XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute. Since only the mute is broken concentrate
 #your efforts on changing that out first.

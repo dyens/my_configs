@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="gallois"
+#ZSH_THEME="gallois"
 #ZSH_THEME="avy"
 #ZSH_THEME="norm"
 
@@ -47,7 +47,7 @@ ZSH_THEME="gallois"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found svn vi-mode docker cargo dnf docker-compose autojump z)
+plugins=(git command-not-found svn vi-mode docker rust dnf docker-compose autojump z)
 
 # User configuration
 
@@ -111,5 +111,3 @@ optirun() {
 export GUIX_LOCPATH="$HOME/.guix-profile/lib/locale"
 
 eval "$(starship init zsh)"
-
-
